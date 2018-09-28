@@ -51,6 +51,16 @@ public class LinkedList {
         }
     }
 
+    public boolean contains(Object obj){
+        current = head;
+        while(current != null){
+            if(current.getData().equals(obj))
+                return true;
+            current = current.next;
+        }
+        return false;
+    }
+
     public void display() {
         Node temp = head;
         while (temp != null) {
