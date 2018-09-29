@@ -50,16 +50,66 @@ public class LinkedList {
             current = current.next;
         }
     }
+    //delete an element at a specified index
+    public void delete(int index) {
+        if (index < 0)
+            throw new ArrayIndexOutOfBoundsException("out of list");
 
-    public boolean contains(Object obj){
+        Node temp;
+        if (index == 0) {
+            if (head.next != null) {
+                temp = head.next;
+                head = temp;
+            } else {
+                head = null;
+                tail = null;
+                current = null;
+            }
+            return;
+        }
+
         current = head;
-        while(current != null){
-            if(current.getData().equals(obj))
+        for (int i = 1; i < index; i++) {
+            if (current.next != null)
+                current = current.next;
+            else
+                throw new ArrayIndexOutOfBoundsException("out of list");
+        }
+
+        if (current.next == null)
+            throw new ArrayIndexOutOfBoundsException("out of list");
+
+        if (current.next == tail) {
+            current.next = null;
+            tail = current;
+        } else {
+            temp = current.next;
+            temp = temp.next;
+            current.next = temp;
+        }
+
+    }
+
+    //get an element at a specified index
+    public Object get(int index) {
+        current = head;
+        int i = 0;
+        while (current != null) {
+            if (i == index)
+                return current.getData();
+            current = current.next;
+            i++;
+        }
+        return null;
+    }
+
+    public boolean contains(Object obj) {
+        current = head;
+        while (current != null) {
+            if (current.getData().equals(obj))
                 return true;
             current = current.next;
         }
-        System.out.println("hello");
-        System.out.println("hello2");
         return false;
     }
 
