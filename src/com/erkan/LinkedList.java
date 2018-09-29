@@ -58,7 +58,8 @@ public class LinkedList {
                 return true;
             current = current.next;
         }
-        System.out.println("asdasdsa");
+        System.out.println("hello");
+        System.out.println("hello2");
         return false;
     }
 
