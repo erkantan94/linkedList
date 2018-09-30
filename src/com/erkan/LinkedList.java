@@ -50,6 +50,7 @@ public class LinkedList {
             current = current.next;
         }
     }
+
     //delete an element at a specified index
     public void delete(int index) {
         if (index < 0)
@@ -101,6 +102,19 @@ public class LinkedList {
             i++;
         }
         return null;
+    }
+
+    //get index of specified element
+    public int getIndex(Object obj){
+        current = head;
+        int i = 0;
+        while (current != null) {
+            if (current.getData().equals(obj))
+                return i;
+            current = current.next;
+            i++;
+        }
+        return -1; // no element
     }
 
     public boolean contains(Object obj) {
